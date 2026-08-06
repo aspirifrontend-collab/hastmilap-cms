@@ -6,6 +6,8 @@
   color: #555;
   line-height: 1.6;
   background-color: #fff;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .app-wrapper h1, .app-wrapper h2, .app-wrapper h3, .app-wrapper h4, .app-wrapper h5, .app-wrapper h6 {
