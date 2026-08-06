@@ -13,6 +13,38 @@ const Header = ({ content }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavClick = (e, targetHref) => {
+    if (targetHref && targetHref.startsWith('#')) {
+      e.preventDefault();
+      
+      let elementId = targetHref.substring(1);
+      
+      // Special mappings requested by the user
+      if (elementId === 'vision') {
+        elementId = 'categories';
+      } else if (elementId === 'contact') {
+        // Find the footer element directly since it might not have an ID
+        const footer = document.querySelector('footer.site-footer') || document.querySelector('.footer-top');
+        if (footer) {
+          footer.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+      }
+      
+      // Normal hash scroll
+      const el = document.getElementById(elementId);
+      if (el) {
+        const headerOffset = 80;
+        const elementPosition = el.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
   return (
     <header className="header">
       <div className="header-left">
@@ -31,11 +63,11 @@ const Header = ({ content }) => {
       <div className="header-center">
         <nav className="header-nav">
           <a href="/">Home</a>
-          {content?.header?.nav1Text !== '' && <a href={content?.header?.nav1Link || "#about"}>{content?.header?.nav1Text || "Company"}</a>}
-          {content?.header?.nav2Text !== '' && <a href={content?.header?.nav2Link || "#styles"}>{content?.header?.nav2Text || "Collection"}</a>}
-          {content?.header?.nav3Text !== '' && <a href={content?.header?.nav3Link || "#categories"}>{content?.header?.nav3Text || "Categories"}</a>}
-          {content?.header?.nav4Text !== '' && <a href={content?.header?.nav4Link || "#strengths"}>{content?.header?.nav4Text || "Why Hastmilap"}</a>}
-          {content?.header?.nav5Text !== '' && <a href={content?.header?.nav5Link || "#footer"}>{content?.header?.nav5Text || "Contact"}</a>}
+          {content?.header?.nav1Text !== '' && <a href={content?.header?.nav1Link || "#about"} onClick={(e) => handleNavClick(e, content?.header?.nav1Link || "#about")}>{content?.header?.nav1Text || "Company"}</a>}
+          {content?.header?.nav2Text !== '' && <a href={content?.header?.nav2Link || "#styles"} onClick={(e) => handleNavClick(e, content?.header?.nav2Link || "#styles")}>{content?.header?.nav2Text || "Collection"}</a>}
+          {content?.header?.nav3Text !== '' && <a href={content?.header?.nav3Link || "#categories"} onClick={(e) => handleNavClick(e, content?.header?.nav3Link || "#categories")}>{content?.header?.nav3Text || "Categories"}</a>}
+          {content?.header?.nav4Text !== '' && <a href={content?.header?.nav4Link || "#strengths"} onClick={(e) => handleNavClick(e, content?.header?.nav4Link || "#strengths")}>{content?.header?.nav4Text || "Why Hastmilap"}</a>}
+          {content?.header?.nav5Text !== '' && <a href={content?.header?.nav5Link || "#footer"} onClick={(e) => handleNavClick(e, content?.header?.nav5Link || "#footer")}>{content?.header?.nav5Text || "Contact"}</a>}
         </nav>
       </div>
 
