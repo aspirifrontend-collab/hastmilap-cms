@@ -347,13 +347,13 @@ export default function Home() {
       {content?.banner?.linkUrl ? (
         <a href={content.banner.linkUrl} target="_blank" rel="noopener noreferrer">
           <picture>
-            <source media="(max-width: 768px)" srcSet={content?.banner?.mobileImageUrl || "assets/images/about_hastmilap_banner_mobile.jpg"} />
+            <source media="(max-width: 900px)" srcSet={content?.banner?.mobileImageUrl || "assets/images/about_hastmilap_banner_mobile.jpg"} />
             <img src={content?.banner?.imageUrl || "assets/images/about_hastmilap_banner.jpg"} alt="Hastmilap Banner" />
           </picture>
         </a>
       ) : (
         <picture>
-          <source media="(max-width: 768px)" srcSet={content?.banner?.mobileImageUrl || "assets/images/about_hastmilap_banner_mobile.jpg"} />
+          <source media="(max-width: 900px)" srcSet={content?.banner?.mobileImageUrl || "assets/images/about_hastmilap_banner_mobile.jpg"} />
           <img src={content?.banner?.imageUrl || "assets/images/about_hastmilap_banner.jpg"} alt="Hastmilap Banner" />
         </picture>
       )}
