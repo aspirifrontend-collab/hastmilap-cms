@@ -73,6 +73,32 @@ export default function Home() {
   };
 
   useEffect(() => {
+    // Handle initial hash scrolling
+    if (window.location.hash) {
+      setTimeout(() => {
+        let hash = window.location.hash.substring(1);
+        if (hash === 'vision') hash = 'categories';
+        
+        if (hash === 'contact') {
+          const footer = document.querySelector('footer.site-footer') || document.querySelector('.footer-top');
+          if (footer) footer.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          const el = document.getElementById(hash);
+          if (el) {
+            const headerOffset = 80;
+            const elementPosition = el.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      }, 500); // Give the DOM some time to render
+    }
+  }, []);
+
+  useEffect(() => {
     // API Call
     api.get('/content').then(res => setContent(res.data)).catch(console.error);
 
