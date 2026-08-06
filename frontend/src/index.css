@@ -3195,42 +3195,6 @@
     text-align: center !important;
   }
 }
-
-/* === OUR STORY HERO RESPONSIVE === */
-.mobile-hero-img { display: none !important; }
-
-@media (max-width: 768px) {
-  .desktop-hero-img { display: none !important; }
-  .mobile-hero-img { display: block !important; }
-}
-
-/* === OUR PHILOSOPHY SECTION === */
-.our-philosophy {
-  position: relative;
-  width: 100%;
-  background-color: #f7f7f7;
-  overflow: hidden;
-}
-
-.philosophy-container {
-  display: flex;
-}
-
-text-align: center;
-}
-.banner-btn:hover {
-  background: #fff;
-  color: #333;
-}
-
-@media (max-width: 768px) {
-  .banner-text-overlay {
-    top: 60%;
-    right: 5%;
-    text-align: right;
-  }
-}
-
 /* === TECH TITLE LINE === */
 .tech-center-content {
   text-align: center;
