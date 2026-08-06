@@ -26,7 +26,6 @@
 
     html {
       scroll-behavior: smooth;
-      overflow-x: hidden;
       width: 100%;
     }
 
@@ -34,13 +33,11 @@
       font-family: 'Montserrat', sans-serif;
       color: var(--text-dark);
       background: var(--white);
-      overflow-x: hidden;
       width: 100%;
       padding-top: 0;
     }
 
     #root {
-      overflow-x: hidden;
       width: 100%;
     }
 
@@ -719,6 +716,7 @@
     /* ─── TECHNOLOGY & INNOVATION ─── */
     .tech-wrapper {
       position: relative;
+      height: 300vh;
       background: #ffffff;
     }
 
@@ -3484,3 +3482,93 @@
     padding: 0 24px;
   }
 }
+
+/* Mobile-only global overflow fix */
+@media (max-width: 900px) {
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
+/* =========================================
+   Mobile Menu Overlay (320, 375, 425, 768)
+   ========================================= */
+.mobile-nav-overlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 100%);
+  background: #ffffff;
+  z-index: 999;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  padding: 20px 8%;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.mobile-nav-overlay.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mobile-nav-links a {
+  display: block;
+  padding: 16px 0;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  border-bottom: 1px solid #eaeaea;
+  transition: color 0.2s ease;
+  transform: translateY(15px);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease, color 0.2s ease;
+}
+
+.mobile-nav-overlay.open .mobile-nav-links a {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobile-nav-overlay.open .mobile-nav-links a:nth-child(1) { transition-delay: 0.1s; }
+.mobile-nav-overlay.open .mobile-nav-links a:nth-child(2) { transition-delay: 0.15s; }
+.mobile-nav-overlay.open .mobile-nav-links a:nth-child(3) { transition-delay: 0.2s; }
+.mobile-nav-overlay.open .mobile-nav-links a:nth-child(4) { transition-delay: 0.25s; }
+
+.mobile-nav-links a:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav-links a:hover {
+  color: #975959;
+}
+
+/* Burger Menu Animation */
+.header.menu-open .mobile-menu-toggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background: #975959;
+}
+.header.menu-open .mobile-menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+.header.menu-open .mobile-menu-toggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background: #975959;
+  width: 100%;
+}
+
+.mobile-nav-overlay.open .mobile-nav-links a:nth-child(5) { transition-delay: 0.3s; }
+.mobile-nav-overlay.open .mobile-nav-links a:nth-child(6) { transition-delay: 0.35s; }
+.mobile-nav-overlay.open .mobile-nav-links a:nth-child(7) { transition-delay: 0.4s; }
