@@ -558,7 +558,7 @@ export default function Home() {
 
       <div className="categories-carousel" id="categoriesCarousel">
         {categoriesList.map((cat, index) => (
-          <div className="category-item reveal" key={index} style={{ animationDelay: `${index * 0.1}s` }}>
+          <div className="category-item" key={index}>
             <div className="category-img-wrap">
               <img src={cat.imageUrl} alt={cat.label} />
             </div>
