@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Radley:ital@0;1&family=Raleway:wght@300;400;500;600&display=swap');
+
+.hastmilap-wrapper {
+  --text-dark: #333333;
+  --text-light: #777777;
+  --bg-light: #f7f7f7;
+  
+  /* Font Definitions */
+  --font-radley: 'Radley', serif;
+  --font-raleway: 'Raleway', sans-serif;
+  
+  --max-width: 1440px;
+  
+  /* Apply Raleway everywhere by default (for descriptions/paragraphs) */
+  font-family: var(--font-raleway);
+  color: var(--text-light);
+  line-height: 1.8;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hastmilap-wrapper * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base Typography */
+.hastmilap-wrapper h1,
+.hastmilap-wrapper h2, 
+.hastmilap-wrapper h3, 
+.hastmilap-wrapper h4 {
+  font-family: var(--font-radley) !important;
+  color: var(--text-dark);
+  font-weight: 400;
+}
+
+.hastmilap-wrapper h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.hastmilap-wrapper p {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-family: var(--font-raleway);
+  font-weight: 500;
+  color: #555555;
+  line-height: 1.8;
+}
+
+/* Raleway Overrides for Specific Sections */
+.raleway-section p,
+.raleway-section .subtitle {
+  font-family: var(--font-raleway);
+}
+
+.raleway-section p {
+  font-weight: 500;
+}
+
+.raleway-section h2 {
+  font-weight: 400; /* Use standard Radley weight instead of bold Raleway */
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.section {
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 100% !important;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 100px;
+  box-sizing: border-box;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.max-w-text {
+  max-width: 100%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Image Styles */
+.full-width-img {
+  width: 100%;
+  max-width: calc(100% - 40px);
+  margin: 40px auto 0;
+  display: block;
+  object-fit: cover;
+}
+
+.large-img {
+  height: 400px;
+}
+
+.medium-img {
+  height: auto;
+}
+
+/* Flex Layouts */
+.flex-row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  justify-content: space-between;
+}
+
+.desktop-hero-img {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  height: 600px !important;
+  margin-top: 50px !important;
+}
+
+.mobile-hero-img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 350px !important;
+  margin-top: 30px !important;
+}
+
+.flex-row .content-col {
+  flex: 1;
+}
+
+.flex-row .image-col {
+  flex: 1;
+}
+
+.image-col img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Specific Sections */
+.our-legacy {
+  padding-top: 40px;
+  padding-bottom: 30px; /* Reduced to bring next section closer */
+}
+
+.story-name {
+  padding-top: 10px; /* Very tight spacing */
+}
+
+/* .our-values {
+  background-color: var(--bg-light);
+} */
+
+.our-values .content-col {
+  padding-right: 40px;
+}
+
+.mission-row {
+  margin-top: 60px;
+}
+
+/* Our Values & Philosophy */
+.our-philosophy {
+  display: flex;
+  align-items: stretch;
+  background-color: #f7f7f7;
+  margin: 80px 0;
+  position: relative;
+}
+
+.our-philosophy .philosophy-container {
+  width: 50%;
+  margin: 0;
+  padding: 80px 5% 80px 10%;
+  display: flex;
+  align-items: center;
+}
+
+.philosophy-text-col {
+  max-width: 500px;
+  width: 100%;
+}
+
+.philosophy-text-col h2 {
+  font-family: var(--font-radley) !important;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.philosophy-image-col {
+  width: 50%;
+  display: flex;
+}
+
+.philosophy-image-col img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.meet-leadership .leadership-intro {
+  margin-bottom: 60px;
+}
+
+.leadership-profile h3 {
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+.sub-heading {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #999;
+  font-family: var(--font-raleway); /* Keeps this modern looking */
+}
+
+.leadership-profile .divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, #e8d5d5, transparent);
+  margin-bottom: 25px;
+  max-width: 300px;
+}
+
+.portrait-img {
+  border-radius: 4px;
+  max-width: 400px !important;
+  margin: 0 auto;
+}
+
+.stats-section {
+  padding-bottom: 100px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 50px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stat-item h4 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+  font-family: var(--font-raleway) !important; /* Force numbers back to Raleway */
+  font-weight: 400;
+}
+
+.stat-item p {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--text-light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .section {
+    padding: 20px 0;
+  }
+  
+  .stats-section {
+    padding: 50px 5px !important; /* Maximize space for 4 columns */
+  }
+  
+  .hastmilap-wrapper p {
+    text-align: justify;
+  }
+  
+  .hastmilap-wrapper h2 {
+    font-size: 1.8rem;
+  }
+
+  .large-img {
+    height: 250px;
+  }
+
+  .medium-img {
+    height: 200px;
+  }
+
+  .flex-row {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* Values Section Mobile Overrides */
+  .our-values .flex-row {
+    flex-direction: column-reverse;
+  }
+
+  .our-values .content-col {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .our-philosophy {
+    flex-direction: column;
+    margin: 40px 0;
+  }
+  
+  .our-philosophy .philosophy-container {
+    width: 100%;
+    padding: 60px 5%;
+  }
+
+  .philosophy-image-col {
+    width: 100%;
+    height: 400px;
+    position: relative;
+  }
+
+  /* Leadership Section Mobile Overrides */
+  .leadership-profile.flex-row {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .leadership-profile .divider {
+    margin: 0 auto 25px auto;
+  }
+
+  .stats-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    gap: 2px !important;
+    justify-content: space-between !important;
+    align-items: stretch !important; /* Force containers to be equal height */
+  }
+
+  .stat-item {
+    width: 25% !important;
+    flex: 0 0 24% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Force content to start exactly at the top */
+    text-align: center !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .stat-item h4 {
+    font-size: 1.4rem !important;
+    text-align: center !important;
+    width: 100%;
+    margin-bottom: 2px;
+  }
+
+  .stat-item p {
+    font-size: 0.65rem !important;
+    text-align: center !important; /* Force override justify */
+    width: 100%;
+    line-height: 1.1 !important;
+    word-break: break-word; /* Prevent long words from breaking grid */
+  }
+}

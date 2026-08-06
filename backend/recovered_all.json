@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "6a6abe0f7aa5139f986b3f88",
+    "section": "ourLegacy",
+    "data": {
+      "subtitle": "Our Legacy",
+      "title": "The World Of Jewelry And The Evolving New Consumer",
+      "description": "Twenty years is not just a number. It is thousands of designs, hundreds of partnerships and millions of pieces crafted with care, precision and purpose. From our roots in Surat to brands and retailers across 7 countries, our legacy is written in the trust of every partner we serve and the happiness of every customer who wears our jewelry.",
+      "imageUrl": "assets/images/building.png"
+    },
+    "__v": 0,
+    "createdAt": "2026-07-30T02:59:27.518Z",
+    "updatedAt": "2026-08-05T05:41:35.322Z"
+  },
+  {
+    "_id": "6a6abe0f7aa5139f986b3f8a",
+    "section": "ourValues",
+    "data": {
+      "title": "Our Values & Philosophy",
+      "desc1": "The finest jewelry does not just catch the eye. It touches the heart. At Hastmilap our vision is to be the world's most trusted jewelry manufacturing partner creating pieces that go beyond beauty and carry meaning, emotion and happiness to every person who wears them. That is what ΓÇ£Wear HappinessΓÇ¥ means to us.",
+      "desc2": "It is not just a thought. It is the standard we hold every design, every detail and every delivery to. When your customers wear Hastmilap they do not just wear jewelry. They wear a moment, a memory and a feeling that stays with them.",
+      "desc3": "That is the promise we make to you and to every customer you serve.",
+      "imageUrl": "https://ik.imagekit.io/kqkm4unsy/hastmilap/3_ueAiaxPby.png"
+    },
+    "__v": 0,
+    "createdAt": "2026-07-30T02:59:27.518Z",
+    "updatedAt": "2026-08-04T11:42:13.998Z"
+  },
+  {
+    "_id": "6a6abe0f7aa5139f986b3f89",
+    "section": "storyName",
+    "data": {
+      "title": "The Story Of Our Name",
+      "desc1": "Hastmilap means the meeting of hands. It is the moment a skilled artisan's hand meets raw material, where a designer's hand meets a brand's vision and where craftsmanship meets purpose. That belief has guided us for over 20 years.",
+      "desc2": "Founded in Surat, the heart of India's jewelry industry, Hastmilap was built on one idea ΓÇö that the best jewelry is born when the right hands come together. Today we bring that belief to brands and retailers across 7 countries, delivering fully customized jewelry designed around your vision and manufactured to the highest standards.",
+      "imageUrl": ""
+    },
+    "__v": 0,
+    "createdAt": "2026-07-30T02:59:27.518Z",
+    "updatedAt": "2026-08-05T05:44:02.452Z"
+  }
+]
