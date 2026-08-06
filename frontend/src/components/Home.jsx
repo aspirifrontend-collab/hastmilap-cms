@@ -1,10 +1,11 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import api from '../api';
 import Header from './Header';
 import Footer from './Footer';
 
 export default function Home() {
+  const hasScrolledRef = useRef(false);
 
   const togglePlay = (e) => {
     const card = e.currentTarget;
@@ -73,8 +74,9 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // Handle initial hash scrolling
-    if (window.location.hash) {
+    // Handle initial hash scrolling after content is loaded
+    if (content && window.location.hash && !hasScrolledRef.current) {
+      hasScrolledRef.current = true;
       setTimeout(() => {
         let hash = window.location.hash.substring(1);
         if (hash === 'vision') hash = 'categories';
@@ -96,7 +98,7 @@ export default function Home() {
         }
       }, 500); // Give the DOM some time to render
     }
-  }, []);
+  }, [content]);
 
   useEffect(() => {
     // API Call

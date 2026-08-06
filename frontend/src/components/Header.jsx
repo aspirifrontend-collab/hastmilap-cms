@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Header = ({ content }) => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector('.header');
@@ -41,6 +44,9 @@ const Header = ({ content }) => {
           top: offsetPosition,
           behavior: 'smooth'
         });
+      } else {
+        // Element not found on this page, redirect to home page with hash instantly using React Router
+        navigate(`/${targetHref}`);
       }
     }
   };
