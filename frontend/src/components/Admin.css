@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 
 :root {
   --bg-color: #f4f7fe;
@@ -640,7 +640,7 @@ textarea.form-control {
   cursor: pointer;
   height: 100%;
 }
-\n
+
 /* Sub-menu styles */
 .nav-group {
   display: flex;
