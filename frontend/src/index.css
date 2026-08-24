@@ -3500,7 +3500,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: calc(100vh - 100%);
   background: #ffffff;
   z-index: 999;

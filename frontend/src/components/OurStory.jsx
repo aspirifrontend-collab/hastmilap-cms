@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import api from '../api';
+import { fetchContentWithRetry } from '../api';
 import Header from './Header';
 import Footer from './Footer';
+import { getCachedContent, setCachedContent } from '../contentCache';
 import './OurStory.css';
 
 const OurStory = () => {
-  const [content, setContent] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [content, setContent] = useState(getCachedContent);
+  const [loading, setLoading] = useState(() => !getCachedContent());
 
   useEffect(() => {
-    api.get('/content').then(res => {
-      setContent(res.data);
+    fetchContentWithRetry().then(data => {
+      setContent(data);
+      setCachedContent(data);
       setLoading(false);
     }).catch(err => {
       console.error('Error fetching content:', err);

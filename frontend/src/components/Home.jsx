@@ -1,8 +1,9 @@
 
 import React, { useEffect, useState, useRef } from 'react';
-import api from '../api';
+import { fetchContentWithRetry } from '../api';
 import Header from './Header';
 import Footer from './Footer';
+import { getCachedContent, setCachedContent } from '../contentCache';
 
 export default function Home() {
   const hasScrolledRef = useRef(false);
@@ -53,7 +54,7 @@ export default function Home() {
     grid.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
   };
 
-  const [content, setContent] = useState(null);
+  const [content, setContent] = useState(getCachedContent);
   const [openFaq, setOpenFaq] = useState(0);
 
   const toggleFaq = (index) => {
@@ -102,7 +103,10 @@ export default function Home() {
 
   useEffect(() => {
     // API Call
-    api.get('/content').then(res => setContent(res.data)).catch(console.error);
+    fetchContentWithRetry().then(data => {
+      setContent(data);
+      setCachedContent(data);
+    }).catch(console.error);
 
     let renderTechFrameId;
     let handleScroll;
@@ -306,6 +310,14 @@ export default function Home() {
 
   return (
     <>
+      {!content && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 99999, background: '#ffffff', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ border: '4px solid #f3f3f3', borderTop: '4px solid #b8976a', borderRadius: '50%', width: '50px', height: '50px', animation: 'spin 1s linear infinite' }}></div>
+          <style>
+            {`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}
+          </style>
+        </div>
+      )}
       <div className="custom-cursor" id="customCursor"></div>
       
       {/* ═ MAIN PROGRESS BAR ═ */}
@@ -440,8 +452,7 @@ export default function Home() {
     <div className="gp-content">
       <h2 className="gp-title reveal">{content?.global?.title || "India To The World"}</h2>
       <div className="gp-divider reveal reveal-delay-1"></div>
-      <p className="gp-desc reveal reveal-delay-2">Hastmilap exports jewelry to seven countries, partnering with brands
-        across India and global markets.</p>
+      <p className="gp-desc reveal reveal-delay-2">Hastmilap exports jewelry to seven countries, partnering with brands across India and global markets.</p>
       <div className="flags-grid reveal reveal-delay-3">
         <div className="flags-row">
           <div className="flag-item">
@@ -470,7 +481,7 @@ export default function Home() {
           </div>
           <div className="flag-item">
             <img src="https://flagcdn.com/hk.svg" alt="Hong Kong" />
-            <span>Hong-Kong</span>
+            <span>Hong Kong</span>
           </div>
         </div>
       </div>
