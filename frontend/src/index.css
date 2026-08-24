@@ -409,7 +409,7 @@
       .stat-item:nth-child(4),
       .stat-item:nth-child(5) {
         flex: 0 0 48%;
-        max-width: 48%;
+        
         margin-top: 10px;
       }
 
@@ -468,7 +468,7 @@
 
     .about-content {
       display: grid;
-      gap: 20px;
+      /* gap: 20px; */
     }
 
     .about-title {
@@ -804,6 +804,39 @@
       gap: 14px;
     }
 
+    /* Mobile-only slider nav arrows; hidden on desktop so the scatter animation is untouched */
+    .tech-nav-btn {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 20;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      padding: 0;
+    }
+
+    .tech-nav-btn.prev {
+      left: 2%;
+    }
+
+    .tech-nav-btn.next {
+      right: 2%;
+    }
+
+    .tech-nav-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: #222;
+    }
+
     @media (max-width: 900px) {
       .tech-wrapper {
         height: auto;
@@ -852,6 +885,14 @@
         font-size: 11px;
       }
 
+      .tech-slider-wrapper {
+        position: relative;
+      }
+
+      .tech-nav-btn {
+        display: flex;
+      }
+
       .tech-slider-container {
         display: flex;
         overflow-x: auto;
@@ -868,7 +909,7 @@
 
       .tech-panel {
         position: relative !important;
-        flex: 0 0 78%;
+        flex: 0 0 100%;
         height: 38.89vh !important;
         transform: none !important;
         opacity: 1 !important;
@@ -1962,8 +2003,8 @@
 
       .stat-item:nth-child(4),
       .stat-item:nth-child(5) {
-        flex: 0 0 48%;
-        max-width: 36%;
+        flex: 0 0 48% !important;
+        
         margin-top: 10px;
       }
 
@@ -1985,7 +2026,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        /* gap: 20px; */
       }
 
       .about-title {
@@ -1996,7 +2037,7 @@
       .about-title .years {
         font-family: 'Playfair Display', serif;
         font-size: 28px;
-        font-weight: 700;
+        font-weight: 500;
         margin-bottom: 0;
       }
 
@@ -2005,6 +2046,7 @@
         font-size: 18px;
         font-weight: 500;
         margin-top: 2px;
+        color: #222;
       }
 
       .about-divider {
@@ -2110,12 +2152,13 @@
 
       .gp-content {
         text-align: center;
+        /* padding-top: 60px; */
       }
 
       .gp-divider {
         margin: 0 auto 20px;
         width: 14.81vh;
-        height: 0.37vh;
+        height: 0.19vh;
       }
 
       .gp-title {
@@ -2397,7 +2440,7 @@
 
       /* Brand marquee spacing */
       .brand-marquee {
-        padding: 50px 0;
+        padding: 25px 0;
       }
 
       /* Footer responsive */
@@ -2544,7 +2587,7 @@
   display: flex;
   align-items: center;
   /* padding: 100px 0; */
-  min-height: 600px;
+  min-height: 800px;
   overflow: hidden;
 }
 
@@ -2561,7 +2604,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: right center; /* Keeps the woman in view */
+  object-position: right top; /* Keeps the woman's face/head in view instead of cropping it */
   display: block;
 }
 
@@ -2601,8 +2644,8 @@
   align-items: center;
   padding: 20px 0;
   cursor: pointer;
-  font-weight: 600;
-  color: #333;
+  font-weight: 500;
+  color: #222;
   font-size: 15px;
   transition: color 0.3s ease;
 }
@@ -2945,7 +2988,7 @@
   .strengths { padding: 50px 0 !important; }
   .editorial-section { padding: 50px 0 !important; }
   .news-section, .sustainability-section { padding: 10px 5% !important; }
-  .global-presence { padding: 50px 0 !important; }
+  .global-presence { padding: 50px 6% !important; }
   .faq-section { min-height: auto !important; padding: 50px 0 0 0 !important; }
   .faq-content { padding-bottom: 0 !important; }
   .tech-wrapper { padding-top: 20px !important; }
@@ -2959,6 +3002,35 @@
   }
   .category-item {
     flex: 0 0 70vw !important;
+  }
+}
+
+/* Fit all 7 flags in a single row without horizontal scroll/clipping */
+@media (max-width: 480px) {
+  .flags-row {
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    gap: 4px !important;
+    overflow-x: visible !important;
+    padding-bottom: 0 !important;
+    width: 100% !important;
+  }
+  .flag-item {
+    width: auto !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    gap: 4px !important;
+  }
+  .flag-item img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 42px !important;
+    aspect-ratio: 3 / 2 !important;
+  }
+  .flag-item span {
+    font-size: 9.5px !important;
+    white-space: normal !important;
+    line-height: 1.2 !important;
   }
 }
 
@@ -3036,9 +3108,14 @@
 
 @media (max-width: 900px) {
   .banner-text-overlay {
-    top: 60%;
+    top: 20%;
     right: 5%;
     text-align: right;
+  }
+
+  .banner-btn {
+    padding: 8px 18px;
+    font-size: 13px;
   }
 }
 
@@ -3138,7 +3215,7 @@
 .ig-title {
   font-family: 'Radley', serif !important;
   font-weight: 400 !important;
-  font-size: clamp(28px, 4vw, 40px) !important;
+  font-size: clamp(26px, 4vw, 40px) !important;
   line-height: clamp(32px, 4.5vw, 45px) !important;
   text-align: center !important;
   text-transform: capitalize !important;
@@ -3575,3 +3652,25 @@
 .mobile-nav-overlay.open .mobile-nav-links a:nth-child(5) { transition-delay: 0.3s; }
 .mobile-nav-overlay.open .mobile-nav-links a:nth-child(6) { transition-delay: 0.35s; }
 .mobile-nav-overlay.open .mobile-nav-links a:nth-child(7) { transition-delay: 0.4s; }
+
+/* News/Sustainability: show all items as a swipeable peek-scroll row on mobile */
+@media (max-width: 900px) {
+  .news-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 15px !important;
+    /* padding: 0 12% 10px 6% !important; */
+    scrollbar-width: none !important;
+  }
+
+  .news-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .news-item {
+    flex: 0 0 85% !important;
+    scroll-snap-align: start;
+  }
+}

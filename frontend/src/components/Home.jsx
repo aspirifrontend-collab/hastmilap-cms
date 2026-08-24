@@ -41,6 +41,17 @@ export default function Home() {
     grid.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
   };
 
+  const scrollTech = (direction) => {
+    const container = document.getElementById('techSliderContainer');
+    if (!container) return;
+    const panel = container.querySelector('.tech-panel');
+    if (!panel) return;
+
+    const panelWidth = panel.getBoundingClientRect().width;
+    const gap = parseInt(getComputedStyle(container).gap) || 15;
+    container.scrollBy({ left: direction * (panelWidth + gap), behavior: 'smooth' });
+  };
+
   const scrollIG = (direction) => {
     const grid = document.getElementById('igGrid');
     if (!grid) return;
@@ -237,12 +248,13 @@ export default function Home() {
         const st = getStartPositions();
 
         const splitP = easeOutQuint(Math.min(1, currentP / 0.65));
+        const revealP = easeOutQuint(Math.min(1, currentP / 0.2));
         const textP = easeOutQuint(Math.max(0, Math.min(1, (currentP - 0.5) / 0.45)));
 
-        applyPanel(tl, st.tl.cx + (fin.tl.cx - st.tl.cx) * splitP, st.tl.cy + (fin.tl.cy - st.tl.cy) * splitP, sz.tl, 1, 5);
-        applyPanel(tr, st.tr.cx + (fin.tr.cx - st.tr.cx) * splitP, st.tr.cy + (fin.tr.cy - st.tr.cy) * splitP, sz.tr, 1, 5);
-        applyPanel(bl, st.bl.cx + (fin.bl.cx - st.bl.cx) * splitP, st.bl.cy + (fin.bl.cy - st.bl.cy) * splitP, sz.bl, 1, 6);
-        applyPanel(br, st.br.cx + (fin.br.cx - st.br.cx) * splitP, st.br.cy + (fin.br.cy - st.br.cy) * splitP, sz.br, 1, 7);
+        applyPanel(tl, st.tl.cx + (fin.tl.cx - st.tl.cx) * splitP, st.tl.cy + (fin.tl.cy - st.tl.cy) * splitP, sz.tl, revealP, 5);
+        applyPanel(tr, st.tr.cx + (fin.tr.cx - st.tr.cx) * splitP, st.tr.cy + (fin.tr.cy - st.tr.cy) * splitP, sz.tr, revealP, 5);
+        applyPanel(bl, st.bl.cx + (fin.bl.cx - st.bl.cx) * splitP, st.bl.cy + (fin.bl.cy - st.bl.cy) * splitP, sz.bl, revealP, 6);
+        applyPanel(br, st.br.cx + (fin.br.cx - st.br.cx) * splitP, st.br.cy + (fin.br.cy - st.br.cy) * splitP, sz.br, revealP, 7);
 
         center.style.opacity = textP;
         center.style.transform = `translate(-50%, calc(-50% + ${(1 - textP) * 40}px))`;
@@ -262,10 +274,10 @@ export default function Home() {
         }
         const sz = getPanelSizes();
         const st = getStartPositions();
-        applyPanel(tl, st.tl.cx, st.tl.cy, sz.tl, 1, 5);
-        applyPanel(tr, st.tr.cx, st.tr.cy, sz.tr, 1, 5);
-        applyPanel(bl, st.bl.cx, st.bl.cy, sz.bl, 1, 6);
-        applyPanel(br, st.br.cx, st.br.cy, sz.br, 1, 7);
+        applyPanel(tl, st.tl.cx, st.tl.cy, sz.tl, 0, 5);
+        applyPanel(tr, st.tr.cx, st.tr.cy, sz.tr, 0, 5);
+        applyPanel(bl, st.bl.cx, st.bl.cy, sz.bl, 0, 6);
+        applyPanel(br, st.br.cx, st.br.cy, sz.br, 0, 7);
         center.style.opacity = '0';
         center.style.transform = 'translate(-50%, calc(-50% + 40px))';
       }
@@ -431,6 +443,8 @@ export default function Home() {
             <div className="about-subtitle">Retail Intelligence</div>
           </div>
 
+          <div className="about-divider"></div>
+
           <div className="about-text-wrapper">
             <p className="about-text">
               {content?.about?.description1 || "For over 20 years, Hastmilap has been the trusted manufacturing partner for jewelry retailers worldwide. We bring together skilled artisans, cutting-edge technology, and modern design to deliver pieces of exceptional quality, precision, and elegance. So your collection always stands out, and your business never stops growing."}
@@ -560,19 +574,33 @@ export default function Home() {
   {/*  ═══ SECTION 8: TECHNOLOGY & INNOVATION ═══  */}
   <div className="tech-wrapper" id="techWrapper">
     <div className="tech-scene" id="techScene">
-      <div className="tech-slider-container">
-        <div className="tech-panel" id="techTL">
-          <img src={content?.tech?.panel1ImageUrl || "assets/images/tech_tl.png"} alt="Wax Prototyping" />
+      <div className="tech-slider-wrapper">
+        <button className="tech-nav-btn prev" onClick={() => scrollTech(-1)} aria-label="Previous">
+          <svg viewBox="0 0 24 24">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          </svg>
+        </button>
+
+        <div className="tech-slider-container" id="techSliderContainer">
+          <div className="tech-panel" id="techTL">
+            <img src={content?.tech?.panel1ImageUrl || "assets/images/tech_tl.png"} alt="Wax Prototyping" />
+          </div>
+          <div className="tech-panel" id="techTR">
+            <img src="assets/images/tech_tr.png" alt="Molten Gold Process" />
+          </div>
+          <div className="tech-panel" id="techBL">
+            <img src="assets/images/tech_bl.png" alt="Expert Craftsmanship" />
+          </div>
+          <div className="tech-panel" id="techBR">
+            <img src="assets/images/tech_br.png" alt="Diamond Setting" />
+          </div>
         </div>
-        <div className="tech-panel" id="techTR">
-          <img src="assets/images/tech_tr.png" alt="Molten Gold Process" />
-        </div>
-        <div className="tech-panel" id="techBL">
-          <img src="assets/images/tech_bl.png" alt="Expert Craftsmanship" />
-        </div>
-        <div className="tech-panel" id="techBR">
-          <img src="assets/images/tech_br.png" alt="Diamond Setting" />
-        </div>
+
+        <button className="tech-nav-btn next" onClick={() => scrollTech(1)} aria-label="Next">
+          <svg viewBox="0 0 24 24">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+          </svg>
+        </button>
       </div>
       <div className="tech-center-content" id="techCenter">
         <h2>{content?.tech?.title || "Technology & Innovation"}</h2>
@@ -623,12 +651,12 @@ export default function Home() {
           <img src={content?.news?.image1Url || "assets/images/news1.png"} alt="News 1" />
         </a>
       </div>
-      <div className="news-item reveal reveal-delay-1 mobile-hidden">
+      <div className="news-item reveal reveal-delay-1">
         <a href={content?.news?.image2Link || "#"}>
           <img src={content?.news?.image2Url || "assets/images/news2.png"} alt="News 2" />
         </a>
       </div>
-      <div className="news-item reveal reveal-delay-2 mobile-hidden">
+      <div className="news-item reveal reveal-delay-2">
         <a href={content?.news?.image3Link || "#"}>
           <img src={content?.news?.image3Url || "assets/images/news3.png"} alt="News 3" />
         </a>
