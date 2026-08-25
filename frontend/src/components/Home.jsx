@@ -4,6 +4,7 @@ import { fetchContentWithRetry } from '../api';
 import Header from './Header';
 import Footer from './Footer';
 import { getCachedContent, setCachedContent } from '../contentCache';
+import { optimizeCloudinaryVideo } from '../cloudinary';
 
 export default function Home() {
   const hasScrolledRef = useRef(false);
@@ -354,11 +355,11 @@ export default function Home() {
       <>
         {/* Desktop Video */}
         <video className="hero-video desktop-hero" autoPlay muted loop playsInline poster={content?.hero?.imageUrl || "assets/images/hero.jpg"}
-          src={content?.hero?.videoUrl || "assets/videos/desktop_hero.mp4"}></video>
-        
+          src={optimizeCloudinaryVideo(content?.hero?.videoUrl) || "assets/videos/desktop_hero.mp4"}></video>
+
         {/* Mobile Video */}
         <video className="hero-video mobile-hero" autoPlay muted loop playsInline poster={content?.hero?.mobileImageUrl || "assets/images/hero_mobile.png"}
-          src={content?.hero?.mobileVideoUrl || "assets/videos/mobile_hero.mp4"}></video>
+          src={optimizeCloudinaryVideo(content?.hero?.mobileVideoUrl) || "assets/videos/mobile_hero.mp4"}></video>
       </>
     )}
       
@@ -708,7 +709,7 @@ export default function Home() {
             </svg>
             <span className="ig-placeholder-label">Hastmilap</span>
           </div>
-          <video loop muted playsInline src={content?.instagram?.videoUrl1 || "assets/videos/instagram/(1).mp4"}></video>
+          <video loop muted playsInline src={optimizeCloudinaryVideo(content?.instagram?.videoUrl1) || "assets/videos/instagram/(1).mp4"}></video>
           <div className="ig-video-overlay">
             <div className="ig-icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
@@ -731,7 +732,7 @@ export default function Home() {
             </svg>
             <span className="ig-placeholder-label">Hastmilap</span>
           </div>
-          <video loop muted playsInline src={content?.instagram?.videoUrl2 || "assets/videos/instagram/07-06.mp4"}></video>
+          <video loop muted playsInline src={optimizeCloudinaryVideo(content?.instagram?.videoUrl2) || "assets/videos/instagram/07-06.mp4"}></video>
           <div className="ig-video-overlay">
             <div className="ig-icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
@@ -754,7 +755,7 @@ export default function Home() {
             </svg>
             <span className="ig-placeholder-label">Hastmilap</span>
           </div>
-          <video loop muted playsInline src={content?.instagram?.videoUrl3 || "assets/videos/instagram/2999 14-08.mp4"}></video>
+          <video loop muted playsInline src={optimizeCloudinaryVideo(content?.instagram?.videoUrl3) || "assets/videos/instagram/2999 14-08.mp4"}></video>
           <div className="ig-video-overlay">
             <div className="ig-icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
@@ -777,7 +778,7 @@ export default function Home() {
             </svg>
             <span className="ig-placeholder-label">Hastmilap</span>
           </div>
-          <video loop muted playsInline src={content?.instagram?.videoUrl4 || "assets/videos/instagram/3099 22-08.mp4"}></video>
+          <video loop muted playsInline src={optimizeCloudinaryVideo(content?.instagram?.videoUrl4) || "assets/videos/instagram/3099 22-08.mp4"}></video>
           <div className="ig-video-overlay">
             <div className="ig-icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
@@ -800,7 +801,7 @@ export default function Home() {
             </svg>
             <span className="ig-placeholder-label">Hastmilap</span>
           </div>
-          <video loop muted playsInline src={content?.instagram?.videoUrl5 || "assets/videos/instagram/3314 05-09.mp4"}></video>
+          <video loop muted playsInline src={optimizeCloudinaryVideo(content?.instagram?.videoUrl5) || "assets/videos/instagram/3314 05-09.mp4"}></video>
           <div className="ig-video-overlay">
             <div className="ig-icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
@@ -823,7 +824,7 @@ export default function Home() {
             </svg>
             <span className="ig-placeholder-label">Hastmilap</span>
           </div>
-          <video loop muted playsInline src={content?.instagram?.videoUrl6 || "assets/videos/instagram/3357 10-09.mp4"}></video>
+          <video loop muted playsInline src={optimizeCloudinaryVideo(content?.instagram?.videoUrl6) || "assets/videos/instagram/3357 10-09.mp4"}></video>
           <div className="ig-video-overlay">
             <div className="ig-icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
@@ -846,7 +847,7 @@ export default function Home() {
             </svg>
             <span className="ig-placeholder-label">Hastmilap</span>
           </div>
-          <video loop muted playsInline src={content?.instagram?.videoUrl7 || "assets/videos/instagram/EXPORT VIDEO-3.mp4"}></video>
+          <video loop muted playsInline src={optimizeCloudinaryVideo(content?.instagram?.videoUrl7) || "assets/videos/instagram/EXPORT VIDEO-3.mp4"}></video>
           <div className="ig-video-overlay">
             <div className="ig-icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
@@ -869,7 +870,7 @@ export default function Home() {
             </svg>
             <span className="ig-placeholder-label">Hastmilap</span>
           </div>
-          <video loop muted playsInline src={content?.instagram?.videoUrl8 || "assets/videos/instagram/Final 02.mp4"}></video>
+          <video loop muted playsInline src={optimizeCloudinaryVideo(content?.instagram?.videoUrl8) || "assets/videos/instagram/Final 02.mp4"}></video>
           <div className="ig-video-overlay">
             <div className="ig-icon-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">

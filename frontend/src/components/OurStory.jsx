@@ -3,7 +3,16 @@ import { fetchContentWithRetry } from '../api';
 import Header from './Header';
 import Footer from './Footer';
 import { getCachedContent, setCachedContent } from '../contentCache';
+import { optimizeCloudinaryVideo } from '../cloudinary';
 import './OurStory.css';
+
+// Breaks the hero title onto its own line after the first comma (matching
+// the design) unless the CMS content already has an explicit line break.
+function formatStoryTitle(title) {
+  const value = title || 'Deep Roots,<br />Unfettered Imagination';
+  if (value.includes('<br')) return value;
+  return value.replace(/,\s*/, ',<br />');
+}
 
 const OurStory = () => {
   const [content, setContent] = useState(getCachedContent);
@@ -35,46 +44,47 @@ const OurStory = () => {
     <div className="hastmilap-wrapper">
       
       {/* Our Story Section (Raleway) */}
-      <section className="section text-center raleway-section">
+      <section className="section text-center raleway-section story-hero">
         <div className="container">
           <span className="subtitle">{storyData.subtitle || 'Our Story'}</span>
-          <h2 dangerouslySetInnerHTML={{ __html: storyData.title || 'Deep Roots,<br />Unfettered Imagination' }} />
+          <h2 dangerouslySetInnerHTML={{ __html: formatStoryTitle(storyData.title) }} />
+          {/* Desktop follows the mediaType toggle (video or image) */}
           {storyData.mediaType === 'video' ? (
-            <>
-              {storyData.videoUrl && storyData.videoUrl.trim() !== '' && (
-                <video 
-                  src={storyData.videoUrl} 
-                  autoPlay muted loop playsInline 
-                  className="full-width-img large-img desktop-hero-img"
-                  style={{ objectFit: 'cover' }}
-                />
-              )}
-              {(storyData.mobileVideoUrl || storyData.videoUrl) && (storyData.mobileVideoUrl || storyData.videoUrl).trim() !== '' && (
-                <video 
-                  src={storyData.mobileVideoUrl || storyData.videoUrl} 
-                  autoPlay muted loop playsInline 
-                  className="full-width-img large-img mobile-hero-img"
-                  style={{ objectFit: 'cover' }}
-                />
-              )}
-            </>
+            storyData.videoUrl && storyData.videoUrl.trim() !== '' && (
+              <video
+                src={optimizeCloudinaryVideo(storyData.videoUrl)}
+                autoPlay muted loop playsInline
+                className="full-width-img large-img desktop-hero-img"
+                style={{ objectFit: 'cover' }}
+              />
+            )
           ) : (
-            <>
-              {storyData.imageUrl && storyData.imageUrl.trim() !== '' && (
-                <img 
-                  src={storyData.imageUrl} 
-                  alt="Our Story Desktop" 
-                  className="full-width-img large-img desktop-hero-img" 
-                />
-              )}
-              {(storyData.mobileImageUrl || storyData.imageUrl) && (storyData.mobileImageUrl || storyData.imageUrl).trim() !== '' && (
-                <img 
-                  src={storyData.mobileImageUrl || storyData.imageUrl} 
-                  alt="Our Story Mobile" 
-                  className="full-width-img large-img mobile-hero-img" 
-                />
-              )}
-            </>
+            storyData.imageUrl && storyData.imageUrl.trim() !== '' && (
+              <img
+                src={storyData.imageUrl}
+                alt="Our Story Desktop"
+                className="full-width-img large-img desktop-hero-img"
+              />
+            )
+          )}
+          {/* Mobile follows the same mediaType toggle as desktop */}
+          {storyData.mediaType === 'video' ? (
+            storyData.videoUrl && storyData.videoUrl.trim() !== '' && (
+              <video
+                src={optimizeCloudinaryVideo(storyData.mobileVideoUrl || storyData.videoUrl)}
+                autoPlay muted loop playsInline
+                className="full-width-img large-img mobile-hero-img"
+                style={{ objectFit: 'cover' }}
+              />
+            )
+          ) : (
+            (storyData.mobileImageUrl || storyData.imageUrl) && (storyData.mobileImageUrl || storyData.imageUrl).trim() !== '' && (
+              <img
+                src={storyData.mobileImageUrl || storyData.imageUrl}
+                alt="Our Story Mobile"
+                className="full-width-img large-img mobile-hero-img"
+              />
+            )
           )}
         </div>
       </section>
