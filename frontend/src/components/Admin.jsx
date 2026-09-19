@@ -2,6 +2,28 @@ import React, { useState, useEffect } from 'react';
 import api from '../api';
 import './Admin.css';
 
+// Backfilled onto fetched content when the DB has no 'contactUs' document yet,
+// so the section still shows up in the sidebar with editable defaults instead
+// of Object.keys() crashing on an undefined section.
+const DEFAULT_CONTACT_US = {
+  heroImageUrl: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+  heroTitle: 'Contact Us',
+  subtitle: 'Contact Us',
+  title: 'Get In Touch',
+  description: 'Subscribe to our newsletter for the latest updates and exclusive offers!',
+  emailLabel: 'Email',
+  emailDesc: 'Our friendly team is here to help.',
+  email: 'sales.hastmilapp@gmail.com',
+  phoneLabel: 'Phone',
+  phoneDesc: 'Mon-Sat from 9:00am to 7:00pm.',
+  phone: '+91 9909871000',
+  officeLabel: 'Office',
+  officeDesc: 'Come say hello at our office HQ.',
+  officeAddress: 'Bardoliya Compound, Near Surat Dawa Bazar,\nVastia Devdi Road, Katargam 395004\nSURAT, GUJARAT, INDIA',
+  formIntro: "We'd love to hear from you. Please fill out this form.",
+  mapEmbedSrc: 'https://www.google.com/maps?q=Bardoliya+Compound,+Near+Surat+Dawa+Bazar,+Vastia+Devdi+Road,+Katargam,+Surat,+Gujarat+395004,+India&output=embed'
+};
+
 export default function Admin() {
   const [content, setContent] = useState({});
   const [loading, setLoading] = useState(true);
@@ -32,8 +54,10 @@ export default function Admin() {
   useEffect(() => {
     if (isAuthenticated) {
       api.get('/content').then(res => {
-        setContent(res.data);
-        if (Object.keys(res.data).length > 0) {
+        const data = res.data;
+        if (!data.contactUs) data.contactUs = { ...DEFAULT_CONTACT_US };
+        setContent(data);
+        if (Object.keys(data).length > 0) {
           setActiveSection('header');
         }
         setLoading(false);
@@ -177,7 +201,7 @@ export default function Admin() {
   const ourStorySectionKeys = ['ourStory', 'ourLegacy', 'storyName', 'ourValues', 'ourPhilosophy', 'leadership', 'stats'];
   const cpSectionKeys = ['cpHero', 'cpDiscovery', 'cpConcept', 'cp3dModelling', 'cpPrototyping', 'cpManufacturing', 'cpQuality', 'cpDelivery'];
   
-  const homeSections = sections.filter(s => s !== 'header' && s !== 'footer' && !ourStorySectionKeys.includes(s) && !b2bSectionKeys.includes(s) && !cpSectionKeys.includes(s));
+  const homeSections = sections.filter(s => s !== 'header' && s !== 'footer' && s !== 'contactUs' && !ourStorySectionKeys.includes(s) && !b2bSectionKeys.includes(s) && !cpSectionKeys.includes(s));
   const ourStorySections = sections.filter(s => ourStorySectionKeys.includes(s));
   const b2bSections = sections.filter(s => b2bSectionKeys.includes(s));
   const cpSections = sections.filter(s => cpSectionKeys.includes(s));
@@ -372,8 +396,18 @@ export default function Admin() {
             </div>
           )}
 
+          {sections.includes('contactUs') && (
+            <button
+              className={`nav-item ${activeSection === 'contactUs' ? 'active' : ''}`}
+              onClick={() => setActiveSection('contactUs')}
+            >
+              <i className="fa-solid fa-envelope"></i>
+              <span>Contact Us Page</span>
+            </button>
+          )}
+
           {sections.includes('footer') && (
-            <button 
+            <button
               className={`nav-item ${activeSection === 'footer' ? 'active' : ''}`}
               onClick={() => setActiveSection('footer')}
             >

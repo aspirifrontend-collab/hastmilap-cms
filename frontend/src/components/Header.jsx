@@ -72,7 +72,7 @@ const Header = ({ content }) => {
             {content?.header?.nav2Text !== '' && <a href={content?.header?.nav2Link || "#styles"} onClick={(e) => handleNavClick(e, content?.header?.nav2Link || "#styles")}>{content?.header?.nav2Text || "Collection"}</a>}
             {content?.header?.nav3Text !== '' && <a href={content?.header?.nav3Link || "#categories"} onClick={(e) => handleNavClick(e, content?.header?.nav3Link || "#categories")}>{content?.header?.nav3Text || "Categories"}</a>}
             {content?.header?.nav4Text !== '' && <a href={content?.header?.nav4Link || "#strengths"} onClick={(e) => handleNavClick(e, content?.header?.nav4Link || "#strengths")}>{content?.header?.nav4Text || "Why Hastmilap"}</a>}
-            {content?.header?.nav5Text !== '' && <a href={content?.header?.nav5Link || "#footer"} onClick={(e) => handleNavClick(e, content?.header?.nav5Link || "#footer")}>{content?.header?.nav5Text || "Contact"}</a>}
+            {content?.header?.nav5Text !== '' && <a href={content?.header?.nav5Link || "/contact-us"} onClick={(e) => handleNavClick(e, content?.header?.nav5Link || "/contact-us")}>{content?.header?.nav5Text || "Contact"}</a>}
           </nav>
         </div>
 
@@ -93,7 +93,7 @@ const Header = ({ content }) => {
             {content?.header?.nav2Text !== '' && <a href={content?.header?.nav2Link || "#styles"} onClick={(e) => handleNavClick(e, content?.header?.nav2Link || "#styles")}>{content?.header?.nav2Text || "Collection"}</a>}
             {content?.header?.nav3Text !== '' && <a href={content?.header?.nav3Link || "#categories"} onClick={(e) => handleNavClick(e, content?.header?.nav3Link || "#categories")}>{content?.header?.nav3Text || "Categories"}</a>}
             {content?.header?.nav4Text !== '' && <a href={content?.header?.nav4Link || "#strengths"} onClick={(e) => handleNavClick(e, content?.header?.nav4Link || "#strengths")}>{content?.header?.nav4Text || "Why Hastmilap"}</a>}
-            {content?.header?.nav5Text !== '' && <a href={content?.header?.nav5Link || "#footer"} onClick={(e) => handleNavClick(e, content?.header?.nav5Link || "#footer")}>{content?.header?.nav5Text || "Contact"}</a>}
+            {content?.header?.nav5Text !== '' && <a href={content?.header?.nav5Link || "/contact-us"} onClick={(e) => handleNavClick(e, content?.header?.nav5Link || "/contact-us")}>{content?.header?.nav5Text || "Contact"}</a>}
           </nav>
         </div>
       </header>

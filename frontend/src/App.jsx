@@ -11,6 +11,7 @@ const Admin = lazy(() => import('./components/Admin'));
 const OurStory = lazy(() => import('./components/OurStory'));
 const B2b = lazy(() => import('./components/B2b'));
 const CreativeProcess = lazy(() => import('./components/CreativeProcess'));
+const ContactUs = lazy(() => import('./components/ContactUs'));
 
 const routeFallback = (
   <div style={{ position: 'fixed', inset: 0, zIndex: 99999, background: '#ffffff', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -32,6 +33,7 @@ function App() {
             <Route path="/our-story" element={<OurStory />} />
             <Route path="/b2b" element={<B2b />} />
             <Route path="/creative-process" element={<CreativeProcess />} />
+            <Route path="/contact-us" element={<ContactUs />} />
           </Routes>
         </Suspense>
       </Router>

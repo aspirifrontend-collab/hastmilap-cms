@@ -119,6 +119,10 @@ export default function Home() {
       setContent(data);
       setCachedContent(data);
     }).catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    if (!content) return;
 
     let renderTechFrameId;
     let handleScroll;
@@ -296,7 +300,7 @@ export default function Home() {
       if(renderTechFrameId) cancelAnimationFrame(renderTechFrameId); 
       if(handleScroll) window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [!!content]);
 
   if (!content) {
     return (

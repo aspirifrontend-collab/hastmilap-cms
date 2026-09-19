@@ -12,7 +12,7 @@ const defaultContent = [
       nav2Text: 'Collection', nav2Link: '#styles',
       nav3Text: 'Categories', nav3Link: '#vision',
       nav4Text: 'Why Hastmilap', nav4Link: '#strengths',
-      nav5Text: 'Contact', nav5Link: '#footer',
+      nav5Text: 'Contact', nav5Link: '/contact-us',
       profileLink: '/login'
     }
   },
@@ -371,6 +371,27 @@ const defaultContent = [
       para1: 'At Hastmilap, quality is not a final step. It is present at every stage of our process. Before any piece leaves our studio, it goes through a rigorous quality control inspection, measured against the highest standards of finish, durability and design accuracy. Only when a piece meets our standard does it carry the Hastmilap promise.',
       imageUrl1: 'https://ik.imagekit.io/kqkm4unsy/hastmilap/11_YQED9eOVn.png',
       imageUrl2: 'https://ik.imagekit.io/kqkm4unsy/hastmilap/12_UwiOJK0ZO.png'
+    }
+  },
+  {
+    section: 'contactUs',
+    data: {
+      heroImageUrl: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+      heroTitle: 'Contact Us',
+      subtitle: 'Contact Us',
+      title: 'Get In Touch',
+      description: 'Subscribe to our newsletter for the latest updates and exclusive offers!',
+      emailLabel: 'Email',
+      emailDesc: 'Our friendly team is here to help.',
+      email: 'sales.hastmilapp@gmail.com',
+      phoneLabel: 'Phone',
+      phoneDesc: 'Mon-Sat from 9:00am to 7:00pm.',
+      phone: '+91 9909871000',
+      officeLabel: 'Office',
+      officeDesc: 'Come say hello at our office HQ.',
+      officeAddress: 'Bardoliya Compound, Near Surat Dawa Bazar,\nVastia Devdi Road, Katargam 395004\nSURAT, GUJARAT, INDIA',
+      formIntro: "We'd love to hear from you. Please fill out this form.",
+      mapEmbedSrc: 'https://www.google.com/maps?q=Bardoliya+Compound,+Near+Surat+Dawa+Bazar,+Vastia+Devdi+Road,+Katargam,+Surat,+Gujarat+395004,+India&output=embed'
     }
   },
   {
