@@ -20,7 +20,7 @@ const Footer = ({ content }) => {
         {/* Overlapping Logo Box */}
         <div className="logo-overlap">
           <div className="logo-circle">
-            <img src="assets/images/footer_logo.png" alt="Hastmilap Jewels" className="brand-logo" />
+            <img src={content?.footer?.logoImageUrl || "assets/images/footer_logo.png"} alt="Hastmilap Jewels" className="brand-logo" />
           </div>
         </div>
       </div>

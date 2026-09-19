@@ -217,6 +217,7 @@ const defaultContent = [
   {
     section: 'footer',
     data: {
+      logoImageUrl: '',
       newsletterTitle: 'GET IN TOUCH',
       newsletterDesc: 'Subscribe to our newsletter for the latest updates and exclusive offers!',
       address: '2nd Floor, Varna House, Lal Darwaja, Station Road, Surat-395003',
