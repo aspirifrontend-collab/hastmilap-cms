@@ -56,6 +56,7 @@ export default function Admin() {
       api.get('/content').then(res => {
         const data = res.data;
         if (!data.contactUs) data.contactUs = { ...DEFAULT_CONTACT_US };
+        if (data.footer && !('logoImageUrl' in data.footer)) data.footer.logoImageUrl = '';
         setContent(data);
         if (Object.keys(data).length > 0) {
           setActiveSection('header');
