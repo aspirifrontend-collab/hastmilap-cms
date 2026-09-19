@@ -463,6 +463,8 @@ export default function Admin() {
                 <div className="form-grid">
                   {Object.keys(content[activeSection])
                     .sort((a, b) => {
+                      if (a === 'logoImageUrl') return -1;
+                      if (b === 'logoImageUrl') return 1;
                       if (a === 'companyLinks') return -1;
                       if (b === 'companyLinks') return 1;
                       return 0;
@@ -548,7 +550,7 @@ export default function Admin() {
                     }
                     
                     return (
-                      <div key={key} className={`form-group ${isLongText ? 'full-width' : ''}`}>
+                      <div key={key} className={`form-group ${isLongText || isMedia ? 'full-width' : ''}`}>
                         <label className="form-label">{key.replace(/([A-Z])/g, ' $1').trim().toUpperCase()}</label>
                         {isMedia ? (
                           <div className="media-input">
